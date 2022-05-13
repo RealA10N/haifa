@@ -30,13 +30,14 @@ bool backtrack(int i) {
 
 int main() {
     cin >> n;
+    fori(n, i) board[i] = -1;
     fori(n, i) {
-        board[i] = -1;
         fori(n, j) {
             char c;
             cin >> c;
             if (c == 'Q') {
-                if (board[i] != -1) return cout << "NO SOLUTION" << endl, 0;
+                if (board[i] != -1 || !canplace(i, j))
+                    return cout << "NO SOLUTION" << endl, 0;
                 board[i] = j;
             }
         }

@@ -17,10 +17,13 @@ int main(int argc, char** argv) {
     if (!(judge_in >> n)) judge_error("can't parse judges n\n");
 
     string s;
-    getline(judge_ans, s);
+    if (!getline(judge_ans, s))
+        judge_error("can't parse first line of judges answer\n");
+
     if (s == NO_SOLUTION) {
         string ans;
-        if (!(author_out >> ans)) wrong_answer("can't parse output string\n");
+        if (!getline(author_out, ans))
+            wrong_answer("can't parse output string\n");
         if (ans == NO_SOLUTION)
             accept();
         else
