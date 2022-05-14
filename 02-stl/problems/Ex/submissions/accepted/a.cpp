@@ -11,21 +11,21 @@ signed main() {
     // -1e9 <= t <= 1e9
     int n, l, t;
     cin >> n >> l >> t;
-    vi s(n), d(n);
-    fori(n, i) cin >> s[n];  // 1 <= si <= l
-    fori(n, i) cin >> d[i];  // -1 <= di <= 1
     t %= 2 * (l - 1);
+
+    vi s(n), d(n);
+    fori(n, i) cin >> s[i];  // 1 <= si <= l
+    fori(n, i) cin >> d[i];  // -1 <= di <= 1
 
     vi f(n);
     fori(n, i) {
-        int v = s[i] + (t * d[i]);
-        while (v < 1 || v > l) {
-            if (v > l)
-                v -= v - l;
+        f[i] = s[i] + (t * d[i]);
+        while (f[i] < 1 || f[i] > l) {
+            if (f[i] > l)
+                f[i] -= 2 * (f[i] - l);
             else
-                v = -v + 1;
+                f[i] = -f[i] + 1;
         }
-        f.push_back(v);
     }
 
     vi p(n);
