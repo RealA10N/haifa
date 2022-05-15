@@ -6,17 +6,13 @@ using namespace std;
 typedef vector<int> vi;
 
 signed main() {
-    // 1 <= n <= 2e5
-    // 1 <= l <= 1e9
-    // -1e9 <= t <= 1e9
     int n, l, t;
     cin >> n >> l >> t;
-    if (l <= 1) return cout << 1 << endl, 0;
-    t %= 2 * (l - 1);
+    t %= 2 * (l - 1);  // <---
 
     vi s(n), d(n);
-    fori(n, i) cin >> s[i];  // 1 <= si <= l
-    fori(n, i) cin >> d[i];  // -1 <= di <= 1
+    fori(n, i) cin >> s[i];
+    fori(n, i) cin >> d[i];
 
     vi f(n);
     fori(n, i) {
